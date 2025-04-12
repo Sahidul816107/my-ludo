@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "63587375-471c-403b-864b-229155d42feb"
+      }
+    },
+    "android": {
+      "package": "com.sahidul.myludo"
+    }
+  }
+}
