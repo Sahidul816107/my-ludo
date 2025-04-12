@@ -21,11 +21,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build APK with Expo
-        run: npx expo export --platform android
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Authenticate with Expo
+        run: eas whoami || eas login --non-interactive --username ${{ secrets.EXPO_USERNAME }} --password ${{ secrets.EXPO_PASSWORD }}
+
+      - name: Build APK locally
+        run: eas build --platform android --local --output=app-release.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: app-release.apk
-          path: ./dist/*.apk
+          path: app-release.apk
